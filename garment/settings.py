@@ -14,7 +14,7 @@ from django.contrib.messages import constants as messages
 from pathlib import Path
 # sect25-len117
 from decouple import config
-#import dj_database_url
+import dj_database_url
 
 
 import os
@@ -25,12 +25,12 @@ import os
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 #NEW Render
-'''
+
 import environ
 
 env = environ.Env()
 environ.Env.read_env()
-'''
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -166,14 +166,14 @@ DATABASES = {
 }
 '''
 #-----------------------
-'''
+
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-       'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+       'default': dj_database_url.parse(env('DATABASE_URL'))
     }
 else:
    print("Postgres URL not found, using sqlite instead")
-'''   
+   
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -253,7 +253,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 
-DATABASE_URL = config('DATABASE_URL')
+#DATABASE_URL = config('DATABASE_URL')
 
 #NEW-> to remove the WARNING in the terminal
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
