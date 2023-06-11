@@ -14,7 +14,7 @@ from django.contrib.messages import constants as messages
 from pathlib import Path
 # sect25-len117
 from decouple import config
-import dj_database_url
+#import dj_database_url
 
 
 import os
@@ -132,18 +132,13 @@ AUTH_USER_MODEL = 'accounts.Account'
 #}
 '''
 #________
-if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-       'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
-else:
-   print("Postgres URL not found, using sqlite instead")
-   DATABASES = {
-        'default': {
-           'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-       }
-   }
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgres://...',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
 '''   
 #__________________________
 '''
@@ -168,9 +163,13 @@ DATABASES = {
 #-----------------------
 
 if 'DATABASE_URL' in os.environ:
-    DATABASES = {
-       'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
+   DATABASES = {
+    'default': dj_database_url.config(
+        default='postgres://...',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
 else:
    print("Postgres URL not found, using sqlite instead")
    
