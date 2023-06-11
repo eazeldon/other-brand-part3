@@ -25,11 +25,12 @@ import os
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 #NEW Render
+'''
 import environ
 
 env = environ.Env()
 environ.Env.read_env()
-
+'''
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -251,6 +252,8 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+
+DATABASE_URL = config('DATABASE_URL')
 
 #NEW-> to remove the WARNING in the terminal
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
