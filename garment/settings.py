@@ -169,7 +169,7 @@ DATABASES = {
 
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
-       'default': dj_database_url.parse(env('DATABASE_URL'))
+       'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
    print("Postgres URL not found, using sqlite instead")
