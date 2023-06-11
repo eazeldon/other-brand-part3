@@ -140,13 +140,12 @@ AUTH_USER_MODEL = 'accounts.Account'
 #    }
 #__________________________
 DATABASES = {
-    'default': dj_database_url.config(         
-           conn_max_age=600, 
-           conn_health_checks=True,  
-           )
-
-           
-           }
+    'default': dj_database_url.config(
+        'postgres://...',
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
 
 
 
