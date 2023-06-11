@@ -14,6 +14,10 @@ from django.contrib.messages import constants as messages
 from pathlib import Path
 # sect25-len117
 from decouple import config
+
+#-render.com dj_database_url
+import dj_database_url
+
 import os
 
 
@@ -108,12 +112,18 @@ WSGI_APPLICATION = 'garment.wsgi.application'
 AUTH_USER_MODEL = 'accounts.Account'
 
  
+#DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': BASE_DIR / 'db.sqlite3',
+#        }
+#    }
+
+#Render
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+
+}
 
 
 
