@@ -44,8 +44,8 @@ DEBUG = config('DEBUG', default=True, cast=bool)  # True
 #    'brand-env.eba-bepcfz6j.us-west-2.elasticbeanstalk.com', '*', 'brandshop.se'
 
 
-ALLOWED_HOSTS = ['other-brand.onrender.com', 'localhost', '127.0.0.1']
-#ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['other-brand.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 #-ADD whitenoise
