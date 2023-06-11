@@ -15,7 +15,7 @@ from pathlib import Path
 # sect25-len117
 from decouple import config
 
-import dj_database_url
+#import dj_database_url
 
 
 import os
@@ -162,7 +162,7 @@ DATABASES = {
 }
 '''
 #-----------------------
-
+'''
 if 'DATABASE_URL' in os.environ:
 
     DATABASES = {
@@ -171,9 +171,10 @@ if 'DATABASE_URL' in os.environ:
 
         
 }
-'''
+
 else:
    print("Postgres URL not found, using sqlite instead")
+'''   
    
 DATABASES = {
         'default': {
@@ -181,7 +182,7 @@ DATABASES = {
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-'''
+
 
 
 
@@ -254,7 +255,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 
-#DATABASE_URL = config('DATABASE_URL')
+DATABASE_URL = config('DATABASE_URL')
 
 #NEW-> to remove the WARNING in the terminal
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
