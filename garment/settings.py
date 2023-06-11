@@ -174,17 +174,26 @@ if 'DATABASE_URL' in os.environ:
 
 else:
    print("Postgres URL not found, using sqlite instead")
-'''   
-   
-DATABASES = {
+'''  
+#------------------
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
+else:
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -255,7 +264,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 
-DATABASE_URL = config('DATABASE_URL')
+#DATABASE_URL = config('DATABASE_URL')
 
 #NEW-> to remove the WARNING in the terminal
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
