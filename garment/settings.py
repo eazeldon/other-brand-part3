@@ -14,7 +14,7 @@ from django.contrib.messages import constants as messages
 from pathlib import Path
 # sect25-len117
 from decouple import config
-#import dj_database_url
+import dj_database_url
 
 
 import os
@@ -163,12 +163,9 @@ DATABASES = {
 #-----------------------
 
 if 'DATABASE_URL' in os.environ:
-   DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://...',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+    DATABASES = {
+         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        
 }
 else:
    print("Postgres URL not found, using sqlite instead")
