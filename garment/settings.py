@@ -25,6 +25,12 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
+#NEW Render
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -139,13 +145,23 @@ AUTH_USER_MODEL = 'accounts.Account'
 #        }
 #    }
 #__________________________
+'''
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        'postgres://...',
+#        conn_max_age=600,
+#        conn_health_checks=True,
+#    )
+#}
+'''
+#____________-
+
 DATABASES = {
-    'default': dj_database_url.config(
-        'postgres://...',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+     
 }
+
 
 
 
