@@ -25,12 +25,12 @@ import os
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 #NEW Render
-
+'''
 import environ
 
 env = environ.Env()
 environ.Env.read_env()
-
+'''
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
