@@ -1,5 +1,6 @@
 ## Brandshop
 
+### GitHub name other-brand-part3
 
 
 ### Concept
