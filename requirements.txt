@@ -11,9 +11,11 @@ constantly==15.1.0
 cryptography==40.0.1
 cssselect==1.2.0
 distlib==0.3.6
-Django==4.2.1
+dj-database-url==0.5.0
+Django==4.2.2
 django-admin-honeypot-updated-2021==1.2.0
 django-admin-thumbnails==0.2.7
+django-environ==0.10.0
 django-ipware==5.0.0
 django-session-timeout==0.1.0
 django-storages==1.13.2
@@ -57,4 +59,5 @@ urllib3==1.26.16
 virtualenv==20.21.0
 virtualenv-clone==0.5.7
 w3lib==2.1.1
+whitenoise==6.4.0
 zope.interface==6.0
