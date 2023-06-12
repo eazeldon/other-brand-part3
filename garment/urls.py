@@ -19,7 +19,7 @@ from . import views
 # -need to import this for upload image in the admin
 from django.conf.urls.static import static
 # -new
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+#from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 
 # -import the store
@@ -38,6 +38,6 @@ urlpatterns = [
 #ADD
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += staticfiles_urlpatterns()
+#urlpatterns += staticfiles_urlpatterns()
 
 
