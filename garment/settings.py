@@ -168,12 +168,7 @@ if 'DATABASE_URL' in os.environ:
  
     DATABASES = {
         'default': dj_database_url.parse(env('DATABASE_URL')),
-           'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env['RDS_DB_NAME'],
-            'USER': env['RDS_DB_USERNAME'],
-            'PASSWORD': env['RDS_DB_PASSWORD'],
-            'HOST': env['RDS_DB_HOSTNAME'],
-            'PORT': env['RDS_DB_PORT'],
+          
         }
     
 
