@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
+    #'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'category',
     'accounts',
@@ -77,7 +77,7 @@ INSTALLED_APPS = [
 #ADD whitenoise
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -167,8 +167,15 @@ DATABASES = {
 if 'DATABASE_URL' in os.environ:
  
     DATABASES = {
-        'default': dj_database_url.parse(env('DATABASE_URL'))
-    } 
+        'default': dj_database_url.parse(env('DATABASE_URL')),
+           'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ('DB_NAME'),
+            'USER': os.environ('DB_USERNAME'),
+            'PASSWORD': os.environ('DB_PASSWORD'),
+            'HOST': os.environ('DB_HOSTNAME'),
+            'PORT': os.environ('DB_PORT'),
+        }
+    
 
 else:
    print("Postgres URL found, using sqlite instead")
@@ -228,7 +235,7 @@ STATICFILES_DIRS = [
 ]
 
 #ADD STATICFILES_STORAGE
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
