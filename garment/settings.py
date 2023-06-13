@@ -163,17 +163,13 @@ DATABASES = {
      
 }
 '''
-#-----------------------
+#----------------------
+
 if 'DB_NAME' in os.environ:
  
     DATABASES = {
         'default': dj_database_url.parse(env('DATABASE_URL')),
-            'ENGINE':'django.db.backends.postgresql',
-            'NAME': os.environ['DB_NAME'],
-            'USER': os.environ['USERNAME'],
-            'PASSWORD': os.environ['PASSWORD'],
-            'HOST': os.environ['HOSTNAME'],
-            'PORT': os.environ['PORT'],
+           
           
         }
     
@@ -188,6 +184,9 @@ DATABASES = {
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+
+
+#__________________________
 
 
 # Password validation
