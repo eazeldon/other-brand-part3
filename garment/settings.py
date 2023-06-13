@@ -167,9 +167,8 @@ DATABASES = {
 if 'DB_NAME' in os.environ:
  
     DATABASES = {
-        'default': {
-            dj_database_url.parse(env('DATABASE_URL')),
-            'ENGINE': 'django.db.backends.postgresql',
+        'default': dj_database_url.parse(env('DATABASE_URL')),
+            'ENGINE':'django.db.backends.postgresql',
             'NAME': os.environ['DB_NAME'],
             'USER': os.environ['USERNAME'],
             'PASSWORD': os.environ['PASSWORD'],
@@ -177,7 +176,7 @@ if 'DB_NAME' in os.environ:
             'PORT': os.environ['PORT'],
           
         }
-    }
+    
 
 else:
    print("Postgres URL found, using sqlite instead")
