@@ -17,7 +17,7 @@ from decouple import config
 
 import dj_database_url
 
-
+import cloudinary
 
 import os
 
@@ -59,6 +59,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 #-ADD whitenoise
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -71,8 +72,17 @@ INSTALLED_APPS = [
     'store',
     'carts',
     'orders',
+    'cloudinary',
   
 ]
+
+
+#____________env key
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET')
+}
 
 #ADD whitenoise
 MIDDLEWARE = [
@@ -235,6 +245,8 @@ STATICFILES_DIRS = [
 ]
 
 #ADD STATICFILES_STORAGE
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
@@ -252,6 +264,9 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+
+
 
 # -SMTP configuration .env
 EMAIL_HOST = config('EMAIL_HOST')
