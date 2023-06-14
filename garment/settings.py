@@ -76,14 +76,14 @@ INSTALLED_APPS = [
   
 ]
 
-
+'''
 #____________env key
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config('CLOUD_NAME'),
     'API_KEY': config('API_KEY'),
     'API_SECRET': config('API_SECRET')
 }
-
+'''
 #ADD whitenoise
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
