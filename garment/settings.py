@@ -17,8 +17,6 @@ from decouple import config
 
 import dj_database_url
 
-#import cloudinary
-
 import os
 
 
@@ -44,13 +42,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # .env
-#ORIGINAL 
 DEBUG = config('DEBUG', default=True, cast=bool)  # True
-#DEBUG = config('DEBUG', cast=bool)
-
-#FOR aws
-#ALLOWED_HOSTS = []
-#    'brand-env.eba-bepcfz6j.us-west-2.elasticbeanstalk.com', '*', 'brandshop.se'
 
 
 #ALLOWED_HOSTS = ['other-brand.onrender.com', 'localhost', '127.0.0.1']
@@ -59,31 +51,27 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 #-ADD whitenoise
 INSTALLED_APPS = [
-    #'cloudinary_storage',
+   
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    #'whitenoise.runserver_nostatic',
+  
     'django.contrib.staticfiles',
     'category',
     'accounts',
     'store',
     'carts',
     'orders',
-    #'cloudinary',
+    'cloudinary',
   
 ]
 
-'''
-#____________env key
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config('API_KEY'),
-    'API_SECRET': config('API_SECRET')
-}
-'''
+
+
+
+
 #ADD whitenoise
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,50 +118,6 @@ WSGI_APPLICATION = 'garment.wsgi.application'
 # from accounts models py
 AUTH_USER_MODEL = 'accounts.Account'
 
- 
-#DATABASES = {
-#        'default': {
-#            'ENGINE': 'django.db.backends.sqlite3',
-#            'NAME': BASE_DIR / 'db.sqlite3',
-#        }
-#    }
-
-#Render
-#DATABASES = {
-#    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-
-#}
-'''
-#________
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://...',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
-'''   
-#__________________________
-'''
-#DATABASES = {
-#    'default': dj_database_url.config(
-#        'postgres://...',
-#        conn_max_age=600,
-#        conn_health_checks=True,
-#    )
-#}
-'''
-#____________-
-'''
-import dj_database_url
-
-DATABASES = {
-
-    'default': dj_database_url.parse(env('DATABASE_URL'))
-     
-}
-'''
-#----------------------
 
 if 'DB_NAME' in os.environ:
  
@@ -196,7 +140,6 @@ DATABASES = {
     }
 
 
-#__________________________
 
 
 # Password validation
@@ -244,23 +187,13 @@ STATICFILES_DIRS = [
    'garment/static',
 ]
 
-#ADD STATICFILES_STORAGE
-#STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-
-
-
-
 # --media file configuration --upload image in the admin
 # --go to web-garment root folder url py setup the path
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # -django alert messages
-#from django.contrib.messages import constants as messages
+from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
@@ -275,7 +208,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 
-#DATABASE_URL = config('DATABASE_URL')
+
 
 #NEW-> to remove the WARNING in the terminal
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
