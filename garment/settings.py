@@ -18,6 +18,7 @@ from pathlib import Path
 import dj_database_url
 
 import os
+import config
 
 
 
@@ -37,6 +38,7 @@ environ.Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # .env
+
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
