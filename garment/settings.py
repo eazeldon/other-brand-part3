@@ -26,7 +26,6 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 #NEW Render
 
-
 import environ
 
 env = environ.Env()
@@ -116,7 +115,7 @@ WSGI_APPLICATION = 'garment.wsgi.application'
 # from accounts models py
 AUTH_USER_MODEL = 'accounts.Account'
 
-
+'''
 if 'DB_NAME' in os.environ:
  
     DATABASES = {
@@ -136,6 +135,41 @@ DATABASES = {
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+
+'''
+'''
+DATABASES = {
+        'default': dj_database_url.parse(env('DATABASE_URL')),
+           
+          
+        }
+'''
+#___________________-
+if 'NAME' in os.environ:
+    DATABASES = {
+           'default': 
+            dj_database_url.parse(env('DATABASE_URL')),
+            'ENGINE': config('django.db.backends.postgresql'),
+            'NAME': config('NAME'),
+            'USER': config('USER'),
+            'PASSWORD': config('PASSWORD'),
+            'HOST': config('HOST'),
+            'PORT': config('PORT'),
+        }
+
+
+else:
+   print("Postgres URL found, using sqlite instead")
+
+
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
