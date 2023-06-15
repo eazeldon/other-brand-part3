@@ -145,7 +145,7 @@ DATABASES = {
         }
 '''
 #___________________-
-if 'NAME' in os.environ:
+if 'dpg_NAME' in os.environ:
     DATABASES = {
            'default': 
             dj_database_url.parse(env('DATABASE_URL')),
