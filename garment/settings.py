@@ -117,7 +117,7 @@ WSGI_APPLICATION = 'garment.wsgi.application'
 # from accounts models py
 AUTH_USER_MODEL = 'accounts.Account'
 
-
+'''
 if 'DATABASE' in os.environ:
  
     DATABASES = {
@@ -143,7 +143,7 @@ DATABASES = {
         }
     }
 
-
+'''
 
 #___________________-
 
@@ -173,7 +173,7 @@ DATABASES = {
     }
 '''    
 #_____________________
-'''
+
 if 'DATABASE' in os.environ:
     DATABASES = {
            'default': 
@@ -191,7 +191,7 @@ DATABASES = {
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
