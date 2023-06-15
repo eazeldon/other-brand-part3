@@ -15,6 +15,7 @@ from pathlib import Path
 # sect25-len117
 from decouple import config
 
+
 import dj_database_url
 
 import os
@@ -24,13 +25,13 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
 #NEW Render
 
 import environ
 
 env = environ.Env()
-environ.Env.read_env()
+#environ.Env.read_env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -46,8 +47,8 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=True, cast=bool)  # True
 
 
-#ALLOWED_HOSTS = ['other-brand.onrender.com', 'localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['other-brand.onrender.com', 'localhost', '127.0.0.1']
+#ALLOWED_HOSTS = ['*']
 
 # Application definition
 #-ADD whitenoise
@@ -117,73 +118,14 @@ WSGI_APPLICATION = 'garment.wsgi.application'
 # from accounts models py
 AUTH_USER_MODEL = 'accounts.Account'
 
-'''
-if 'DATABASE' in os.environ:
- 
-    DATABASES = {
-        'default': 
-                   dj_database_url.parse(env('DATABASE_URL')),
-                   'ENGINE': ('django.db.backends.postgresql'),
-                   'DATABASE': os.environ['DATABASE'],
-                   'USER': os.environ['USER'],
-                   'PASSWORD': os.environ['PASSWORD'],
-                   'HOST': os.environ['HOST'],
-                   'PORT': os.environ['PORT'],
-        }
-    
-
-else:
-   print("Postgres URL found, using sqlite instead")
-
-
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-
-'''
-
-#___________________-
-
-
-if 'NAME' in os.environ:
-    DATABASES = {
-           'default': 
-            dj_database_url.parse(env('DATABASE_URL')),
-            'ENGINE': ('django.db.backends.postgresql'),
-            'DATABASE': config('NAME'),
-            'USER': config('USER'),
-            'PASSWORD': config('PASSWORD'),
-            'HOST': config('HOST'),
-            'PORT': config('PORT'),
-    }
-
-
-else:
-   print("Postgres URL found, using sqlite instead")
-
-
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-    
 #_____________________
 
-'''
 
 if 'NAME' in os.environ:
-    DATABASES = {
-           'default': 
-            dj_database_url.parse(env('DATABASE_URL'))
-    }
+   DATABASES = {
+       'default':  dj_database_url.parse(env('DATABASE_URL'))
+}   
            
-
-
 else:
    print("Postgres URL found, using sqlite instead")
 
@@ -194,7 +136,8 @@ DATABASES = {
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-'''
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
