@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from django.contrib.messages import constants as messages
 from pathlib import Path
 # sect25-len117
-from decouple import config
+#from decouple import config
 
 import dj_database_url
 
