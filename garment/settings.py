@@ -13,12 +13,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from django.contrib.messages import constants as messages
 from pathlib import Path
 # sect25-len117
-#from decouple import config
+from decouple import config
 
 import dj_database_url
 
 import os
-from decouple import config
+
 
 
 
@@ -147,12 +147,12 @@ DATABASES = {
 '''
 #___________________-
 
-if 'DATABASE' in os.environ:
+if 'DB_DATABASE' in os.environ:
     DATABASES = {
            'default': 
             dj_database_url.parse(env('DATABASE_URL')),
-            'ENGINE': config('django.db.backends.postgresql'),
-            'DATABASE': config('DATABASE'),
+            'ENGINE': ('django.db.backends.postgresql'),
+            'DATABASE': config('DB_DATABASE'),
             'USER': config('USER'),
             'PASSWORD': config('PASSWORD'),
             'HOST': config('HOST'),
