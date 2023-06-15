@@ -147,13 +147,13 @@ DATABASES = {
 
 #___________________-
 
-'''
-if 'DB_DATABASE' in os.environ:
+
+if 'NAME' in os.environ:
     DATABASES = {
            'default': 
             dj_database_url.parse(env('DATABASE_URL')),
             'ENGINE': ('django.db.backends.postgresql'),
-            'DATABASE': config('DB_DATABASE'),
+            'DATABASE': config('NAME'),
             'USER': config('USER'),
             'PASSWORD': config('PASSWORD'),
             'HOST': config('HOST'),
@@ -171,32 +171,18 @@ DATABASES = {
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-'''    
+    
 #_____________________
+
+'''
 
 if 'NAME' in os.environ:
     DATABASES = {
            'default': 
-            dj_database_url.parse(env('DATABASE_URL')),
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ['NAME'],
-            'USER': os.environ['USER'],
-            'PASSWORD': os.environ['PASSWORD'],
-            'HOST': os.environ['HOST'],
-            'PORT': os.environ['PORT'],
-        }
-    
-else:
-   print("Postgres URL found, using sqlite instead")
-    
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+            dj_database_url.parse(env('DATABASE_URL'))
     }
            
-'''
+
 
 else:
    print("Postgres URL found, using sqlite instead")
@@ -208,7 +194,6 @@ DATABASES = {
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 '''
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
