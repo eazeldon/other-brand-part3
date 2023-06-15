@@ -48,8 +48,8 @@ DEBUG = config('DEBUG', default=True, cast=bool)  # True
 
 
 #ALLOWED_HOSTS = ['other-brand.onrender.com', 'localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['other-brand.onrender.com', 'localhost']
-#ALLOWED_HOSTS = ['*']
+
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 #-ADD whitenoise
