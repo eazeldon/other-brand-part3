@@ -155,7 +155,7 @@ if 'dpg_NAME' in os.environ:
             'PASSWORD': config('PASSWORD'),
             'HOST': config('HOST'),
             'PORT': config('PORT'),
-        }
+    }
 
 
 else:
