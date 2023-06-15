@@ -118,13 +118,13 @@ WSGI_APPLICATION = 'garment.wsgi.application'
 AUTH_USER_MODEL = 'accounts.Account'
 
 '''
-if 'DATABASE' in os.environ:
+if 'DB_DATABASE' in os.environ:
  
     DATABASES = {
         'default': 
                    dj_database_url.parse(env('DATABASE_URL')),
-                   'ENGINE': config('django.db.backends.postgresql'),
-                   'DATABASE': os.environ['DATABASE'],
+                   'ENGINE': ('django.db.backends.postgresql'),
+                   'DATABASE': os.environ['DB_DATABASE'],
                    'USER': os.environ['USER'],
                    'PASSWORD': os.environ['PASSWORD'],
                    'HOST': os.environ['HOST'],
