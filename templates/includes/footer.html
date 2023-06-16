@@ -39,16 +39,6 @@
 </footer>
 <!--***** jquery PRODUCT GALLERY store-product_detail.html **************-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function(){
-		$('.thumb a').click(function(e){
-			e.preventDefault();
-			$('.mainImage img').attr('src', $(this).attr("href"));
-		})
-	})
-</script>
-
-<!-- ========================= FOOTER END // ========================= -->
 
 <!--***** jquery PRODUCT GALLERY store-product_detail.html **************-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -60,8 +50,22 @@
 		})
 	})
 </script>
+
+<!-- ========================= FOOTER END // ========================= -->
+
+
+<!---****jquery PRODUCT GALLERY store-product_detail.html *********''-->
+<script>
+	$(document).ready(function(){
+		$('.thumb a').click(function(e){
+			e.preventDefault();
+			$('.mainImage img').attr('src', $(this).attr("href"));
+		})
+	})
+</script>
  
 <!---Carosel-->
+<!---
 <script>
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -70,9 +74,9 @@ function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-/*function currentSlide(n) {
+function currentSlide(n) {
   showSlides(slideIndex = n);
-}*/
+}
 
 function showSlides(n) {
   var i;
@@ -90,7 +94,9 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
   captionText.innerHTML = dots[slideIndex-1].alt;
+  
 }
+-->
 </script>
 
 </body>
